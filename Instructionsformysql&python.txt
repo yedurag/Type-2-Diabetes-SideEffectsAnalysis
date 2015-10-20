@@ -1,0 +1,87 @@
+#Facebook Side effects analysis Instructions
+#Author Yedurag Babu yzb0005
+#Date 10/20/2015
+
+###MySQL###
+Run the following in mysql in root, localhost, port 3306:
+
+1. Create a db called "facebookdata"
+
+2. Create the following tables
+
+CREATE TABLE `facebookdata`.`facebook_maintable` (
+  `unique_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `created_time` VARCHAR(50) NULL COMMENT '',
+ 
+ `created_year` VARCHAR(5) NULL COMMENT '',
+  `created_year_month` VARCHAR(10) NULL COMMENT '',
+  `created_date` VARCHAR(15) NULL COMMENT '',
+
+  `message_text` VARCHAR(1000) NULL COMMENT '',
+  `text_type` VARCHAR(10) NULL COMMENT '',
+  `side_effect_prob` FLOAT NULL COMMENT '',
+  
+`side_effect_indicator` INT NULL COMMENT '',
+  `actos` INT NULL COMMENT '',
+  `glucophage` INT NULL COMMENT '',
+  `byetta` INT NULL COMMENT '',
+  `victoza` INT NULL COMMENT '',
+
+  `invokana` INT NULL COMMENT '',
+  `avandia` INT NULL COMMENT '',
+  `lantus` INT NULL COMMENT '',
+  `januvia` INT NULL COMMENT '',
+  `amaryl` INT NULL COMMENT '',
+  `other_no_med`
+ INT NULL COMMENT '',
+  `nausea` INT NULL COMMENT '',
+  `weight_loss_gain` INT NULL COMMENT '',
+  `hypoglycaemia` INT NULL COMMENT '',
+  `diarrhoea` INT NULL COMMENT '',
+ 
+ `dizziness` INT NULL COMMENT '',
+  `breathing_issues` INT NULL COMMENT '',
+  `headache` INT NULL COMMENT '',
+  `fatigue` INT NULL COMMENT '',
+  `pancreatitis` INT NULL COMMENT '
+',
+  `pain` INT NULL COMMENT '',
+  `kidney_problem` INT NULL COMMENT '',
+  `gastric_problem` INT NULL COMMENT '',
+  `skin_problem` INT NULL COMMENT '',
+  `vision_problem` 
+INT NULL COMMENT '',
+  `mental_problem` INT NULL COMMENT '',
+  `other_no_problem` INT NULL COMMENT '',
+  `post_comment_id` VARCHAR(200) NULL COMMENT '',
+  PRIMARY KEY (`unique_id`)  COMMENT '')
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE `facebookdata`.`lda_results` (
+  `created_date` VARCHAR(20) NULL COMMENT '',
+  `message_text` LONGTEXT NULL COMMENT '',
+  `topicnum` VARCHAR(20) NULL COMMENT '',
+  `topic_words` LONGTEXT NULL COMMENT '')
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+CREATE TABLE `facebookdata`.`lda_loglikes` (
+  `iterationnum` INT(32) NULL COMMENT '',
+  `loglikes` FLOAT NULL COMMENT '')
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+###Python###
+
+pip install the following:
+
+1. numpy
+2.lda
+3.pattern
+
+
+Install the mysql.connector for python 2.7
+
