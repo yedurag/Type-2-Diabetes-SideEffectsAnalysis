@@ -141,6 +141,62 @@ CREATE TABLE `facebookdata`.`faers_data` (
   `medchars_count3` INT NULL COMMENT '',
   PRIMARY KEY (`unique_id`)  COMMENT '');
 
+
+
+CREATE TABLE `facebookdata`.`askapatient_maintable` (
+  `unique_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `rating` INT NULL COMMENT '',
+  `side_effects` LONGTEXT NULL COMMENT '',
+  `comments` LONGTEXT NULL COMMENT '',
+  `gender` VARCHAR(45) NULL COMMENT '',
+  `age` VARCHAR(45) NULL COMMENT '',
+  `age_bin` VARCHAR(45) NULL COMMENT '',
+  `duration_days` FLOAT NULL COMMENT '',
+  `date_entered` VARCHAR(45) NULL COMMENT '',
+  `drug_name` VARCHAR(45) NULL COMMENT '',
+  `nausea` INT NULL COMMENT '',
+  `weightlossgain` INT NULL COMMENT '',
+  `hypoglycaemia` INT NULL COMMENT '',
+  `diarrhoea` INT NULL COMMENT '',
+  `dizziness` INT NULL COMMENT '',
+  `breathingissues` INT NULL COMMENT '',
+  `headache` INT NULL COMMENT '',
+  `fatigue` INT NULL COMMENT '',
+  `pancreatitis` INT NULL COMMENT '',
+  `pain` INT NULL COMMENT '',
+  `kidneyproblems` INT NULL COMMENT '',
+  `gastricdiscomfort` INT NULL COMMENT '',
+  `skinproblems` INT NULL COMMENT '',
+  `visionproblems` INT NULL COMMENT '',
+  `mentalproblems` INT NULL COMMENT '',
+  `oedema` INT NULL COMMENT '',
+  `heartproblems` INT NULL COMMENT '',
+  `others` INT NULL COMMENT '',
+  PRIMARY KEY (`unique_id`)  COMMENT '');
+
+
+CREATE TABLE `facebookdata`.`askapatient_lda_results` (
+  `rating` INT NULL COMMENT '',
+  `side_effects` LONGTEXT NULL COMMENT '',
+  `comments` LONGTEXT NULL COMMENT '',
+  `gender` VARCHAR(45) NULL COMMENT '',
+  `age` VARCHAR(45) NULL COMMENT '',
+  `age_bin` VARCHAR(45) NULL COMMENT '',
+  `duration_days` FLOAT NULL COMMENT '',
+  `date_entered` VARCHAR(45) NULL COMMENT '',
+  `drug_name` VARCHAR(45) NULL COMMENT '',
+  `topicnum` VARCHAR(45) NULL COMMENT '',
+  `topic_words` LONGTEXT NULL COMMENT '');
+
+
+
+CREATE TABLE `facebookdata`.`askapatient_lda_loglikes` (
+  `iterationnum` INT NULL COMMENT '',
+  `loglikes` FLOAT NULL COMMENT '');
+
+
+
+
 ###Python###
 
 pip install the following:
