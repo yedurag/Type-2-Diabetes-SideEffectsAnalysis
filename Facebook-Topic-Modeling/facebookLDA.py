@@ -221,6 +221,19 @@ def foo():
         for i in topicList:
             if predictedTopicnum == i[0]:
                 ldaOutput.append([docDate,docText,'Topic: ' + str(predictedTopicnum+1),i[1]])
+    cnx = dbConnect()
+    cur = cnx.cursor()
+
+    cur.execute("DELETE FROM lda_results")
+    cur.execute("DELETE FROM lda_loglikes")
+    insert_data = ("INSERT INTO lda_results "
+                       "(created_date, message_text,topicnum, topic_words)"
+                       "VALUES (%s, %s, %s,%s)")
+
+    insert_loglikes = ("INSERT INTO lda_loglikes "
+                       "(iterationnum, loglikes)"
+                       "VALUES (%s, %s)")
+
     for point in ldaOutput:
         cur.execute(insert_data, point)
     loglikelyhoods = list(ldaModel.loglikelihoods_[5:])
@@ -237,7 +250,7 @@ def foo():
     cnx.commit()
     cnx.close()
     print "check now"
-    threading.Timer(120, foo).start()        
+    threading.Timer(3000, foo).start()        
             
 foo()            
     
